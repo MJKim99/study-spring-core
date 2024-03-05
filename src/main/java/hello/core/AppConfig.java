@@ -27,16 +27,19 @@ public class AppConfig {
     //기존 MemberServiceImpl에서 직접적으로 Repository를 넣어주지 않게 하기 위해 아래와 같이 작성
     @Bean // 스프링 컨테이너에 등록되며, `name`을 설정하지 않는다면 Bean 이름은 메서드명으로 등록된다.
     public MemberService memberService() {
+        System.out.println("call AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());
     }
 
     @Bean
     public MemberRepository memberRepository() {
+        System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
 
     @Bean
     public OrderService orderService() {
+        System.out.println("call AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
