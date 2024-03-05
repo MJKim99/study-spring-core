@@ -1,5 +1,9 @@
 package hello.core.member;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class MemberServiceImpl implements MemberService {
 
     /**
@@ -9,6 +13,7 @@ public class MemberServiceImpl implements MemberService {
 //    private final MemberRepository memberRepository = new MemoryMemberRepository();
     private final MemberRepository memberRepository; //DIP를 지켜 추상화에만 의존하도록 한다.
 
+    @Autowired // ac.getBean(MemberRepository.class)와 동일하게 동작
     // AppConfig 생성 후 MemberRepository에 무엇이 들어갈지 생성자를 통해서 주입하는 걸로 변경.
     public MemberServiceImpl(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
