@@ -12,7 +12,7 @@ public class BeanLifeCycleTest {
     public void likeCycleTest() {
         ConfigurableApplicationContext ac = new AnnotationConfigApplicationContext(LifeCycleConfig.class);
         NetworkClient client = ac.getBean(NetworkClient.class);
-        ac.close();
+        ac.close(); // close 위해 ConfigurableApplicationContext 타입으로 선언
     }
 
     @Configuration
