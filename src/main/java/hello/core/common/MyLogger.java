@@ -1,6 +1,7 @@
 package hello.core.common;
 
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -8,7 +9,7 @@ import javax.annotation.PreDestroy;
 import java.util.UUID;
 
 @Component
-@Scope(value = "request") // request 스코프로 지정하여 해당 빈이 HTTP 요청 당 하나씩 생성되고, HTTP 요청이 끝날 때 소멸
+@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS) // request 스코프로 지정하여 해당 빈이 HTTP 요청 당 하나씩 생성되고, HTTP 요청이 끝날 때 소멸
 public class MyLogger {
 
     private String uuid;
